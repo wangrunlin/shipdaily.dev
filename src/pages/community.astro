@@ -1,0 +1,294 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="社区动态 - shipdaily.dev"
+  description="查看 ShipDaily 社区的最新动态，了解其他开发者的每日 Ship 进展。加入 #shipdaily 挑战，与志同道合的开发者一起成长。"
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-green-600 to-blue-600 text-white">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold sm:text-5xl">
+          🌟 社区动态
+        </h1>
+        <p class="mt-4 text-xl sm:text-2xl max-w-3xl mx-auto">
+          看看其他开发者的 #shipdaily 进展，获取灵感和动力
+        </p>
+        <div class="mt-8">
+          <a
+            href="https://twitter.com/hashtag/shipdaily"
+            target="_blank"
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-blue-600 hover:bg-gray-50 transition-colors duration-300"
+          >
+            在 Twitter 查看更多
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Stats -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg p-6 text-white text-center">
+          <div class="text-3xl font-bold mb-2" id="active-members">156+</div>
+          <p class="text-purple-100">活跃成员</p>
+        </div>
+        <div class="bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg p-6 text-white text-center">
+          <div class="text-3xl font-bold mb-2" id="total-ships">2,847</div>
+          <p class="text-blue-100">总 Ship 次数</p>
+        </div>
+        <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-6 text-white text-center">
+          <div class="text-3xl font-bold mb-2" id="longest-streak">42天</div>
+          <p class="text-green-100">最长连击</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Activity -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900">最近动态</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          社区成员的最新 #shipdaily 分享
+        </p>
+      </div>
+
+      <!-- Activity Feed -->
+      <div class="max-w-4xl mx-auto">
+        <div class="space-y-6" id="activity-feed">
+          <!-- Loading state -->
+          <div class="text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-2 text-gray-600">加载社区动态中...</p>
+          </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-8">
+          <button 
+            id="load-more" 
+            class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-300"
+            style="display: none;"
+          >
+            加载更多动态
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Participate -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-8">
+        如何参与社区？
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-blue-50 rounded-lg p-6">
+          <div class="text-4xl mb-4">📱</div>
+          <h3 class="text-xl font-semibold text-blue-900 mb-3">分享你的进展</h3>
+          <p class="text-blue-800">
+            在 Twitter 上使用 #shipdaily 标签分享你的每日编程进展。
+            可以包括学到的新知识、完成的功能、或遇到的有趣问题。
+          </p>
+        </div>
+
+        <div class="bg-green-50 rounded-lg p-6">
+          <div class="text-4xl mb-4">💬</div>
+          <h3 class="text-xl font-semibold text-green-900 mb-3">互动支持</h3>
+          <p class="text-green-800">
+            点赞、评论和转发其他开发者的 #shipdaily 动态。
+            相互鼓励和学习，建立有意义的开发者关系。
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg p-8 text-white">
+        <h3 class="text-2xl font-bold mb-4">分享模板</h3>
+        <div class="bg-white bg-opacity-20 rounded-lg p-4 text-left">
+          <p class="text-sm text-purple-100 mb-2">复制并自定义这个模板：</p>
+          <code class="text-white block">
+            🚢 #shipdaily Day X<br/>
+            📝 今天学习/完成了：[具体内容]<br/>
+            💡 学到的新知识：[关键收获]<br/>
+            🔗 项目链接：[可选]<br/>
+            #coding #buildinpublic #学习
+          </code>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Mock data for community activity
+  const mockActivities = [
+    {
+      id: 1,
+      user: "张三",
+      username: "@zhangsan_dev",
+      avatar: "👨‍💻",
+      content: "🚢 #shipdaily Day 15\n📝 今天完成了用户认证系统的后端 API\n💡 学会了 JWT 的最佳实践\n🔥 连续 15 天！",
+      timestamp: "2小时前",
+      likes: 12,
+      retweets: 3
+    },
+    {
+      id: 2,
+      user: "李四",
+      username: "@lisi_frontend",
+      avatar: "👩‍💻",
+      content: "🚢 #shipdaily Day 8\n📝 用 React 重构了旧组件\n💡 发现了性能优化的几个技巧\n📊 页面加载速度提升了 40%",
+      timestamp: "4小时前",
+      likes: 8,
+      retweets: 2
+    },
+    {
+      id: 3,
+      user: "王五",
+      username: "@wangwu_data",
+      avatar: "🧑‍🔬",
+      content: "🚢 #shipdaily Day 23\n📝 完成了数据可视化仪表板\n💡 学习了 D3.js 的高级用法\n🎨 效果比预期的还要好！",
+      timestamp: "6小时前",
+      likes: 15,
+      retweets: 5
+    },
+    {
+      id: 4,
+      user: "赵六",
+      username: "@zhaoliu_mobile",
+      avatar: "📱",
+      content: "🚢 #shipdaily Day 31\n📝 发布了第一个 Flutter 应用的 beta 版\n💡 移动开发比想象中更有趣\n🎉 一个月的坚持终于有成果了！",
+      timestamp: "8小时前",
+      likes: 25,
+      retweets: 8
+    },
+    {
+      id: 5,
+      user: "钱七",
+      username: "@qianqi_backend",
+      avatar: "⚙️",
+      content: "🚢 #shipdaily Day 12\n📝 优化了数据库查询性能\n💡 索引的重要性不能忽视\n⚡ 响应时间从 2s 降到了 200ms",
+      timestamp: "10小时前",
+      likes: 18,
+      retweets: 6
+    },
+    {
+      id: 6,
+      user: "孙八",
+      username: "@sunba_devops",
+      avatar: "🚀",
+      content: "🚢 #shipdaily Day 45\n📝 搭建了完整的 CI/CD 流水线\n💡 自动化部署真的能节省很多时间\n🔧 团队开发效率提升明显",
+      timestamp: "12小时前",
+      likes: 22,
+      retweets: 7
+    }
+  ];
+
+  let currentActivityIndex = 0;
+  let isLoading = false;
+
+  function createActivityCard(activity) {
+    return `
+      <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+        <div class="flex items-start space-x-4">
+          <div class="flex-shrink-0">
+            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
+              ${activity.avatar}
+            </div>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center space-x-2 mb-2">
+              <h3 class="text-sm font-semibold text-gray-900">${activity.user}</h3>
+              <span class="text-sm text-gray-500">${activity.username}</span>
+              <span class="text-sm text-gray-500">·</span>
+              <span class="text-sm text-gray-500">${activity.timestamp}</span>
+            </div>
+            <p class="text-gray-700 whitespace-pre-line mb-4">${activity.content}</p>
+            <div class="flex items-center space-x-6 text-gray-500">
+              <button class="flex items-center space-x-1 hover:text-red-500 transition-colors">
+                <span>❤️</span>
+                <span class="text-sm">${activity.likes}</span>
+              </button>
+              <button class="flex items-center space-x-1 hover:text-green-500 transition-colors">
+                <span>🔁</span>
+                <span class="text-sm">${activity.retweets}</span>
+              </button>
+              <button class="text-sm hover:text-blue-500 transition-colors">
+                回复
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function loadInitialActivities() {
+    const activityFeed = document.getElementById('activity-feed');
+    const loadMoreBtn = document.getElementById('load-more');
+    
+    if (!activityFeed) return;
+
+    // Show initial activities
+    const initialActivities = mockActivities.slice(0, 3);
+    activityFeed.innerHTML = initialActivities.map(createActivityCard).join('');
+    currentActivityIndex = 3;
+
+    // Show load more button if there are more activities
+    if (currentActivityIndex < mockActivities.length && loadMoreBtn) {
+      loadMoreBtn.style.display = 'inline-flex';
+    }
+  }
+
+  function loadMoreActivities() {
+    const activityFeed = document.getElementById('activity-feed');
+    const loadMoreBtn = document.getElementById('load-more');
+    
+    if (!activityFeed || isLoading) return;
+
+    isLoading = true;
+    if (loadMoreBtn) {
+      loadMoreBtn.innerHTML = `
+        <div class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600 mr-2"></div>
+        加载中...
+      `;
+    }
+
+    // Simulate loading delay
+    setTimeout(() => {
+      const remainingActivities = mockActivities.slice(currentActivityIndex, currentActivityIndex + 3);
+      
+      if (remainingActivities.length > 0) {
+        activityFeed.insertAdjacentHTML('beforeend', remainingActivities.map(createActivityCard).join(''));
+        currentActivityIndex += remainingActivities.length;
+      }
+
+      // Hide load more button if no more activities
+      if (currentActivityIndex >= mockActivities.length && loadMoreBtn) {
+        loadMoreBtn.style.display = 'none';
+      } else if (loadMoreBtn) {
+        loadMoreBtn.innerHTML = '加载更多动态';
+      }
+
+      isLoading = false;
+    }, 1000);
+  }
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    loadInitialActivities();
+    
+    const loadMoreBtn = document.getElementById('load-more');
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', loadMoreActivities);
+    }
+  });
+</script>

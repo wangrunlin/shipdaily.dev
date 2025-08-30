@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="shipdaily.dev - 每日 Ship 挑战">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl">
+          🚢 每日 Ship 挑战
+        </h1>
+        <p class="mt-4 text-xl sm:text-2xl max-w-3xl mx-auto">
+          Build in Public，坚持每天编程，记录成长轨迹
+        </p>
+        <div class="mt-8">
+          <a
+            href="#progress"
+            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-blue-600 hover:bg-gray-50 transition-colors duration-300"
+          >
+            查看今日进度
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Progress Section -->
+  <section id="progress" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900">今日进度</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          wangrunlin 的 ShipDaily 挑战数据
+        </p>
+      </div>
+
+      <!-- Status Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Today's Status -->
+        <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-6 text-white text-center">
+          <div class="text-4xl mb-2">✅</div>
+          <h3 class="text-lg font-semibold">今日状态</h3>
+          <p class="text-2xl font-bold mt-2" id="today-status">已完成</p>
+        </div>
+
+        <!-- Streak -->
+        <div class="bg-gradient-to-r from-orange-400 to-red-500 rounded-lg p-6 text-white text-center">
+          <div class="text-4xl mb-2">🔥</div>
+          <h3 class="text-lg font-semibold">连续天数</h3>
+          <p class="text-3xl font-bold mt-2" id="streak-count">5</p>
+        </div>
+
+        <!-- Monthly Progress -->
+        <div class="bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg p-6 text-white text-center">
+          <div class="text-4xl mb-2">📊</div>
+          <h3 class="text-lg font-semibold">本月完成</h3>
+          <p class="text-3xl font-bold mt-2" id="monthly-count">15/31</p>
+        </div>
+
+        <!-- Total Days -->
+        <div class="bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg p-6 text-white text-center">
+          <div class="text-4xl mb-2">📈</div>
+          <h3 class="text-lg font-semibold">总计天数</h3>
+          <p class="text-3xl font-bold mt-2" id="total-count">127</p>
+        </div>
+      </div>
+
+      <!-- Calendar View -->
+      <div class="bg-gray-50 rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-gray-900 mb-4 text-center">最近 7 天</h3>
+        <div class="grid grid-cols-7 gap-2" id="calendar-week">
+          <!-- Calendar will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-8">
+        什么是 ShipDaily 挑战？
+      </h2>
+      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+        ShipDaily 是一个每日编程习惯养成挑战。通过坚持每天至少提交一次代码，
+        培养持续学习和创造的习惯。这不仅是关于代码，更是关于持续的进步和成长。
+      </p>
+      <div class="flex justify-center space-x-4">
+        <a
+          href="/about"
+          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300"
+        >
+          了解更多
+        </a>
+        <a
+          href="/community"
+          class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-300"
+        >
+          加入社区
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Load stats from GitHub API
+  async function loadStats() {
+    try {
+      const response = await fetch('/api/stats');
+      const stats = await response.json();
+      
+      if (response.ok) {
+        updateUI(stats);
+      } else {
+        console.error('Failed to load stats:', stats.error);
+        // Keep default mock data if API fails
+      }
+    } catch (error) {
+      console.error('Failed to fetch stats:', error);
+      // Keep default mock data if API fails
+    }
+  }
+
+  // Update UI with real data
+  function updateUI(stats) {
+    // Update status indicators
+    const todayStatusEl = document.getElementById('today-status');
+    const streakCountEl = document.getElementById('streak-count');
+    const monthlyCountEl = document.getElementById('monthly-count');
+    const totalCountEl = document.getElementById('total-count');
+    
+    if (todayStatusEl) {
+      todayStatusEl.textContent = stats.todayStatus ? '已完成' : '未完成';
+      const statusCard = todayStatusEl.closest('div');
+      if (statusCard) {
+        statusCard.querySelector('.text-4xl').textContent = stats.todayStatus ? '✅' : '❌';
+        if (!stats.todayStatus) {
+          statusCard.className = statusCard.className.replace('from-green-400 to-green-600', 'from-red-400 to-red-600');
+        }
+      }
+    }
+    
+    if (streakCountEl) streakCountEl.textContent = stats.streakCount.toString();
+    if (monthlyCountEl) monthlyCountEl.textContent = `${stats.monthlyCount}/${stats.monthlyTotal}`;
+    if (totalCountEl) totalCountEl.textContent = stats.totalCount.toString();
+    
+    // Update calendar
+    updateCalendar(stats.recentDays);
+  }
+
+  // Initialize calendar with data
+  function updateCalendar(recentDays = null) {
+    const calendar = document.getElementById('calendar-week');
+    if (!calendar) return;
+
+    calendar.innerHTML = ''; // Clear existing content
+    
+    const today = new Date();
+    const days = ['日', '一', '二', '三', '四', '五', '六'];
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      
+      const dayElement = document.createElement('div');
+      dayElement.className = 'text-center p-3 rounded-lg';
+      
+      // Use real data if available, otherwise use mock data
+      const isCompleted = recentDays ? recentDays[6 - i] : (Math.random() > 0.3);
+      
+      if (isCompleted) {
+        dayElement.className += ' bg-green-500 text-white';
+        dayElement.innerHTML = `
+          <div class="text-sm font-semibold">${days[date.getDay()]}</div>
+          <div class="text-xs">${date.getDate()}</div>
+          <div class="mt-1">✅</div>
+        `;
+      } else {
+        dayElement.className += ' bg-gray-200 text-gray-600';
+        dayElement.innerHTML = `
+          <div class="text-sm font-semibold">${days[date.getDay()]}</div>
+          <div class="text-xs">${date.getDate()}</div>
+          <div class="mt-1">❌</div>
+        `;
+      }
+      
+      calendar.appendChild(dayElement);
+    }
+  }
+
+  // Initialize when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize with mock data first for immediate display
+    updateCalendar();
+    
+    // Then load real data
+    await loadStats();
+  });
+</script>

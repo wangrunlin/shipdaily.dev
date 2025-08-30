@@ -1,0 +1,323 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="联系我 - wangrunlin - shipdaily.dev"
+  description="与 wangrunlin 取得联系，讨论 ShipDaily 挑战、技术交流或合作机会。通过 Twitter、GitHub、邮件等方式联系。"
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
+    <div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl font-extrabold sm:text-5xl">
+        联系我
+      </h1>
+      <p class="mt-6 text-xl leading-8">
+        欢迎讨论技术、分享想法或者一起参与 ShipDaily 挑战
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Options -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900">多种联系方式</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          选择最适合你的方式与我取得联系
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Twitter -->
+        <a 
+          href="https://twitter.com/wangrunlin_"
+          target="_blank"
+          class="block bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xl">
+              🐦
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-gray-900">Twitter</h3>
+              <p class="text-blue-600">@wangrunlin_</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            最快的联系方式，我会及时回复私信。也可以在这里看到我的 #shipdaily 动态更新。
+          </p>
+          <div class="flex items-center text-blue-600">
+            <span class="mr-2">关注我的Twitter</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a 
+          href="https://github.com/wangrunlin"
+          target="_blank"
+          class="block bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+        >
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white text-xl">
+              📚
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-gray-900">GitHub</h3>
+              <p class="text-gray-600">@wangrunlin</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            查看我的项目和代码，欢迎 star、fork 或提交 issue。也可以通过 GitHub 讨论技术问题。
+          </p>
+          <div class="flex items-center text-gray-700">
+            <span class="mr-2">访问我的 GitHub</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white text-xl">
+              ✉️
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-gray-900">邮件</h3>
+              <p class="text-green-600">点击复制邮箱地址</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            适合较正式的交流，如商务合作、技术咨询或详细的项目讨论。
+          </p>
+          <button 
+            id="copy-email" 
+            class="flex items-center text-green-600 hover:text-green-700 transition-colors"
+          >
+            <span class="mr-2">复制邮箱地址</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- WeChat -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl">
+              💬
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-semibold text-gray-900">微信</h3>
+              <p class="text-green-600">扫码添加</p>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-4">
+            适合中文交流，可以讨论技术话题、分享学习心得或加入学习群。
+          </p>
+          <button 
+            id="show-wechat" 
+            class="flex items-center text-green-600 hover:text-green-700 transition-colors"
+          >
+            <span class="mr-2">显示微信二维码</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-gray-900">常见问题</h2>
+        <p class="mt-4 text-lg text-gray-600">
+          一些经常被问到的问题
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">
+            🤔 什么情况下适合联系你？
+          </h3>
+          <p class="text-gray-600">
+            欢迎以下类型的交流：技术讨论、ShipDaily 挑战相关问题、开源项目合作、
+            学习经验分享、职业发展交流等。我很乐意与其他开发者交流想法。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">
+            ⏰ 多久会回复消息？
+          </h3>
+          <p class="text-gray-600">
+            我通常会在 24 小时内回复。Twitter 私信回复最快，邮件可能需要稍长时间。
+            如果是紧急问题，建议通过 Twitter 联系。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">
+            🎯 可以请你做技术分享或参与活动吗？
+          </h3>
+          <p class="text-gray-600">
+            我对技术分享很感兴趣！如果你正在组织技术聚会、会议或在线活动，
+            欢迎联系我。我特别喜欢分享关于持续学习、Build in Public 和开发者成长的话题。
+          </p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">
+            🤝 可以一起做项目吗？
+          </h3>
+          <p class="text-gray-600">
+            绝对可以！我一直在寻找有趣的项目和合作机会。无论是开源项目、
+            学习项目还是有意义的产品，都欢迎讨论。最好先通过 Twitter 或邮件简单介绍项目想法。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Response Commitment -->
+  <section class="py-16 bg-blue-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-white mb-4">
+        我的回复承诺
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        每一条消息都会认真对待，每一个问题都值得回答
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <div class="bg-white bg-opacity-10 rounded-lg p-4">
+          <div class="text-2xl mb-2">⚡</div>
+          <h3 class="font-semibold text-white mb-2">快速回复</h3>
+          <p class="text-blue-100 text-sm">24小时内回复</p>
+        </div>
+        <div class="bg-white bg-opacity-10 rounded-lg p-4">
+          <div class="text-2xl mb-2">💯</div>
+          <h3 class="font-semibold text-white mb-2">认真对待</h3>
+          <p class="text-blue-100 text-sm">每条消息都会仔细阅读</p>
+        </div>
+        <div class="bg-white bg-opacity-10 rounded-lg p-4">
+          <div class="text-2xl mb-2">🤝</div>
+          <h3 class="font-semibold text-white mb-2">友好交流</h3>
+          <p class="text-blue-100 text-sm">开放和尊重的对话</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Email Toast -->
+<div id="email-toast" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+  ✓ 邮箱地址已复制到剪贴板
+</div>
+
+<!-- WeChat Modal -->
+<div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
+  <div class="bg-white rounded-lg p-8 max-w-sm mx-4">
+    <div class="text-center mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">微信二维码</h3>
+      <p class="text-gray-600 text-sm">扫码添加我的微信</p>
+    </div>
+    
+    <!-- Placeholder for QR code -->
+    <div class="w-64 h-64 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+      <div class="text-center text-gray-500">
+        <div class="text-6xl mb-2">📱</div>
+        <p class="text-sm">微信二维码</p>
+        <p class="text-xs">(请联系获取)</p>
+      </div>
+    </div>
+    
+    <button 
+      id="close-wechat-modal"
+      class="w-full bg-gray-200 text-gray-800 py-2 px-4 rounded-lg hover:bg-gray-300 transition-colors"
+    >
+      关闭
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const copyEmailBtn = document.getElementById('copy-email');
+    const emailToast = document.getElementById('email-toast');
+    const showWeChatBtn = document.getElementById('show-wechat');
+    const wechatModal = document.getElementById('wechat-modal');
+    const closeModalBtn = document.getElementById('close-wechat-modal');
+
+    // Copy email functionality
+    if (copyEmailBtn && emailToast) {
+      copyEmailBtn.addEventListener('click', async () => {
+        const email = 'wangrunlin@example.com'; // Replace with actual email
+        
+        try {
+          await navigator.clipboard.writeText(email);
+          
+          // Show toast
+          emailToast.classList.remove('translate-x-full');
+          
+          // Hide toast after 3 seconds
+          setTimeout(() => {
+            emailToast.classList.add('translate-x-full');
+          }, 3000);
+        } catch (err) {
+          console.error('Failed to copy email:', err);
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = email;
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          try {
+            document.execCommand('copy');
+            emailToast.classList.remove('translate-x-full');
+            setTimeout(() => {
+              emailToast.classList.add('translate-x-full');
+            }, 3000);
+          } catch (fallbackErr) {
+            console.error('Fallback copy failed:', fallbackErr);
+          }
+          document.body.removeChild(textArea);
+        }
+      });
+    }
+
+    // WeChat modal functionality
+    if (showWeChatBtn && wechatModal) {
+      showWeChatBtn.addEventListener('click', () => {
+        wechatModal.classList.remove('hidden');
+        wechatModal.classList.add('flex');
+      });
+    }
+
+    if (closeModalBtn && wechatModal) {
+      closeModalBtn.addEventListener('click', () => {
+        wechatModal.classList.add('hidden');
+        wechatModal.classList.remove('flex');
+      });
+    }
+
+    // Close modal when clicking outside
+    if (wechatModal) {
+      wechatModal.addEventListener('click', (e) => {
+        if (e.target === wechatModal) {
+          wechatModal.classList.add('hidden');
+          wechatModal.classList.remove('flex');
+        }
+      });
+    }
+  });
+</script>

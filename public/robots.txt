@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive or private pages
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://shipdaily.dev/sitemap.xml
+
+# Crawl-delay (optional - helps prevent server overload)
+Crawl-delay: 1

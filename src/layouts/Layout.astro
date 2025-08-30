@@ -1,0 +1,170 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  keywords?: string;
+  author?: string;
+  type?: string;
+}
+
+const { 
+  title, 
+  description = "shipdaily.dev - 个人 Build in Public 展示网站 + 开发者每日 Ship 社区。记录 wangrunlin 的每日编程挑战，展示项目进展，分享学习心得。",
+  image = "https://shipdaily.dev/og-image.png",
+  keywords = "shipdaily,每日编程,Build in Public,开发者社区,GitHub,编程挑战,技术分享,wangrunlin",
+  author = "wangrunlin",
+  type = "website"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="shipdaily.dev" />
+    <meta property="og:locale" content="zh_CN" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:creator" content="@wangrunlin_" />
+    
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    <meta name="application-name" content="shipdaily.dev" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "wangrunlin",
+        "url": "https://shipdaily.dev",
+        "image": "https://shipdaily.dev/og-image.png",
+        "sameAs": [
+          "https://twitter.com/wangrunlin_",
+          "https://github.com/wangrunlin"
+        ],
+        "jobTitle": "Developer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Independent"
+        },
+        "description": "每日编程挑战者，Build in Public 实践者，开源项目贡献者"
+      }
+    </script>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://api.github.com" />
+    <link rel="preconnect" href="https://twitter.com" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+  </head>
+  
+  <body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <a href="/" class="text-xl font-bold text-gray-900">
+              🚢 shipdaily.dev
+            </a>
+          </div>
+          
+          <div class="hidden md:block">
+            <div class="ml-10 flex items-baseline space-x-4">
+              <a href="/" class="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">首页</a>
+              <a href="/about" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">关于项目</a>
+              <a href="/community" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">社区动态</a>
+              <a href="/me" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">我的动态</a>
+            </div>
+          </div>
+          
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button class="text-gray-600 hover:text-gray-900 focus:outline-none">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-20">
+      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">项目</h3>
+            <ul class="mt-4 space-y-4">
+              <li><a href="/about" class="text-base text-gray-500 hover:text-gray-900">关于 ShipDaily</a></li>
+              <li><a href="https://github.com/wangrunlin/shipdaily.dev" class="text-base text-gray-500 hover:text-gray-900" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">社区</h3>
+            <ul class="mt-4 space-y-4">
+              <li><a href="/community" class="text-base text-gray-500 hover:text-gray-900">社区动态</a></li>
+              <li><a href="https://twitter.com/hashtag/shipdaily" class="text-base text-gray-500 hover:text-gray-900" target="_blank">#shipdaily</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 tracking-wider uppercase">联系</h3>
+            <ul class="mt-4 space-y-4">
+              <li><a href="https://twitter.com/wangrunlin_" class="text-base text-gray-500 hover:text-gray-900" target="_blank">Twitter</a></li>
+              <li><a href="https://github.com/wangrunlin" class="text-base text-gray-500 hover:text-gray-900" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-8 border-t border-gray-200 pt-8">
+          <p class="text-base text-gray-400 text-center">
+            © 2025 shipdaily.dev. Built with ❤️ by wangrunlin.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
