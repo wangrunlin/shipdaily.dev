@@ -33,7 +33,7 @@
 ### 环境要求
 
 - Node.js 18.0 或更高版本
-- npm 或 yarn 包管理器
+- [Bun](https://bun.sh/) 1.0 或更高版本
 
 ### 本地开发
 
@@ -47,13 +47,13 @@ cd shipdaily.dev
 2. 安装依赖
 
 ```bash
-npm install
+bun install
 ```
 
 3. 启动开发服务器
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 4. 打开浏览器访问 [http://localhost:4321](http://localhost:4321)
@@ -62,10 +62,10 @@ npm run dev
 
 ```bash
 # 构建生产版本
-npm run build
+bun run build
 
 # 预览构建结果
-npm run preview
+bun run preview
 ```
 
 ## 📁 项目结构

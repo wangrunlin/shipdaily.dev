@@ -4,21 +4,36 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="shipdaily.dev - 每日 Ship 挑战">
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-6xl mx-auto py-20 px-4 sm:py-28 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl">
-          🚢 每日 Ship 挑战
+        <div class="mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-900 text-white text-2xl font-semibold">
+            🚢
+          </div>
+        </div>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          每日 Ship 挑战
         </h1>
-        <p class="mt-4 text-xl sm:text-2xl max-w-3xl mx-auto">
-          Build in Public，坚持每天编程，记录成长轨迹
+        <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+          Build in Public，坚持每天编程，记录成长轨迹。<br/>
+          通过持续的小步前进，实现技术成长和习惯养成。
         </p>
-        <div class="mt-8">
+        <div class="mt-10 flex items-center justify-center gap-x-4">
           <a
             href="#progress"
-            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-blue-600 hover:bg-gray-50 transition-colors duration-300"
+            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200 shadow-sm"
           >
             查看今日进度
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </a>
+          <a
+            href="/about"
+            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+          >
+            了解更多
           </a>
         </div>
       </div>
@@ -26,76 +41,110 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Progress Section -->
-  <section id="progress" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold text-gray-900">今日进度</h2>
-        <p class="mt-4 text-lg text-gray-600">
+  <section id="progress" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-2xl font-bold text-gray-900">今日进度</h2>
+        <p class="mt-2 text-sm text-gray-600">
           wangrunlin 的 ShipDaily 挑战数据
         </p>
       </div>
 
       <!-- Status Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
         <!-- Today's Status -->
-        <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-6 text-white text-center">
-          <div class="text-4xl mb-2">✅</div>
-          <h3 class="text-lg font-semibold">今日状态</h3>
-          <p class="text-2xl font-bold mt-2" id="today-status">已完成</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-50">
+              <div class="text-lg text-green-600" id="today-status-icon">✅</div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900" id="today-status-display">-</div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-600">今日状态</h3>
+          <p class="text-xs text-gray-500 mt-1" id="today-status">检查中...</p>
         </div>
 
         <!-- Streak -->
-        <div class="bg-gradient-to-r from-orange-400 to-red-500 rounded-lg p-6 text-white text-center">
-          <div class="text-4xl mb-2">🔥</div>
-          <h3 class="text-lg font-semibold">连续天数</h3>
-          <p class="text-3xl font-bold mt-2" id="streak-count">5</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-orange-50">
+              <div class="text-lg text-orange-600">🔥</div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900" id="streak-count">-</div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-600">连续天数</h3>
+          <p class="text-xs text-gray-500 mt-1">当前连击记录</p>
         </div>
 
         <!-- Monthly Progress -->
-        <div class="bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg p-6 text-white text-center">
-          <div class="text-4xl mb-2">📊</div>
-          <h3 class="text-lg font-semibold">本月完成</h3>
-          <p class="text-3xl font-bold mt-2" id="monthly-count">15/31</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-blue-50">
+              <div class="text-lg text-blue-600">📊</div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900" id="monthly-count">-</div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-600">本月完成</h3>
+          <p class="text-xs text-gray-500 mt-1">本月进度统计</p>
         </div>
 
         <!-- Total Days -->
-        <div class="bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg p-6 text-white text-center">
-          <div class="text-4xl mb-2">📈</div>
-          <h3 class="text-lg font-semibold">总计天数</h3>
-          <p class="text-3xl font-bold mt-2" id="total-count">127</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-purple-50">
+              <div class="text-lg text-purple-600">📈</div>
+            </div>
+            <div class="text-2xl font-bold text-gray-900" id="total-count">-</div>
+          </div>
+          <h3 class="text-sm font-medium text-gray-600">总计天数</h3>
+          <p class="text-xs text-gray-500 mt-1">累计 Ship 天数</p>
         </div>
       </div>
 
       <!-- Calendar View -->
-      <div class="bg-gray-50 rounded-lg p-6">
-        <h3 class="text-xl font-semibold text-gray-900 mb-4 text-center">最近 7 天</h3>
-        <div class="grid grid-cols-7 gap-2" id="calendar-week">
+      <div class="bg-white rounded-xl border border-gray-200 p-8">
+        <div class="text-center mb-8">
+          <h3 class="text-lg font-semibold text-gray-900">最近 7 天</h3>
+          <p class="text-sm text-gray-600 mt-1">每日提交状态</p>
+        </div>
+        
+        <div class="grid grid-cols-7 gap-3 mb-6" id="calendar-week">
           <!-- Calendar will be populated by JavaScript -->
+        </div>
+        
+        <!-- Data Source Indicator -->
+        <div class="border-t border-gray-100 pt-4 text-center" id="data-source-indicator">
+          <div class="inline-flex items-center text-xs text-gray-500">
+            <svg class="w-3 h-3 mr-1.5 animate-spin hidden" id="loading-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            <span id="data-source-text">加载数据中...</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section class="py-16 bg-gray-50">
+  <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-extrabold text-gray-900 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
         什么是 ShipDaily 挑战？
       </h2>
-      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+      <p class="text-base text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
         ShipDaily 是一个每日编程习惯养成挑战。通过坚持每天至少提交一次代码，
         培养持续学习和创造的习惯。这不仅是关于代码，更是关于持续的进步和成长。
       </p>
-      <div class="flex justify-center space-x-4">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
         <a
           href="/about"
-          class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-300"
+          class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200 w-full sm:w-auto justify-center"
         >
           了解更多
         </a>
         <a
           href="/community"
-          class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-300"
+          class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200 w-full sm:w-auto justify-center"
         >
           加入社区
         </a>
@@ -127,18 +176,26 @@ import Layout from '../layouts/Layout.astro';
   function updateUI(stats) {
     // Update status indicators
     const todayStatusEl = document.getElementById('today-status');
+    const todayStatusDisplayEl = document.getElementById('today-status-display');
+    const todayStatusIconEl = document.getElementById('today-status-icon');
     const streakCountEl = document.getElementById('streak-count');
     const monthlyCountEl = document.getElementById('monthly-count');
     const totalCountEl = document.getElementById('total-count');
     
-    if (todayStatusEl) {
-      todayStatusEl.textContent = stats.todayStatus ? '已完成' : '未完成';
-      const statusCard = todayStatusEl.closest('div');
-      if (statusCard) {
-        statusCard.querySelector('.text-4xl').textContent = stats.todayStatus ? '✅' : '❌';
-        if (!stats.todayStatus) {
-          statusCard.className = statusCard.className.replace('from-green-400 to-green-600', 'from-red-400 to-red-600');
-        }
+    // Update today's status
+    if (todayStatusEl && todayStatusDisplayEl && todayStatusIconEl) {
+      if (stats.todayStatus) {
+        todayStatusEl.textContent = '已完成';
+        todayStatusDisplayEl.textContent = '✓';
+        todayStatusDisplayEl.className = 'text-2xl font-bold text-green-600';
+        todayStatusIconEl.textContent = '✅';
+        todayStatusIconEl.closest('.bg-green-50').className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-green-50';
+      } else {
+        todayStatusEl.textContent = '未完成';
+        todayStatusDisplayEl.textContent = '×';
+        todayStatusDisplayEl.className = 'text-2xl font-bold text-red-600';
+        todayStatusIconEl.textContent = '❌';
+        todayStatusIconEl.closest('.bg-green-50').className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-red-50';
       }
     }
     
@@ -148,6 +205,53 @@ import Layout from '../layouts/Layout.astro';
     
     // Update calendar
     updateCalendar(stats.recentDays);
+    
+    // Update data source indicator
+    updateDataSourceIndicator(stats);
+  }
+
+  // Update data source indicator
+  function updateDataSourceIndicator(stats) {
+    const loadingIcon = document.getElementById('loading-icon');
+    const dataSourceText = document.getElementById('data-source-text');
+    
+    if (loadingIcon) loadingIcon.classList.add('hidden');
+    
+    if (dataSourceText && stats) {
+      const lastUpdated = stats.lastUpdated ? new Date(stats.lastUpdated) : new Date();
+      const timeAgo = getTimeAgo(lastUpdated);
+      
+      if (stats.dataSource === 'real') {
+        dataSourceText.innerHTML = `
+          <span class="text-green-600">●</span>
+          <span class="ml-1">实时数据，${timeAgo}更新</span>
+        `;
+      } else if (stats.dataSource === 'fallback') {
+        dataSourceText.innerHTML = `
+          <span class="text-yellow-600">●</span>
+          <span class="ml-1">备用数据，${timeAgo}更新</span>
+        `;
+      } else if (stats.dataSource === 'mock') {
+        dataSourceText.innerHTML = `
+          <span class="text-red-600">●</span>
+          <span class="ml-1">演示数据（非真实数据）</span>
+        `;
+      }
+    }
+  }
+
+  // Get time ago string
+  function getTimeAgo(date) {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMinutes = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMinutes / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    
+    if (diffMinutes < 1) return '刚刚';
+    if (diffMinutes < 60) return `${diffMinutes}分钟前`;
+    if (diffHours < 24) return `${diffHours}小时前`;
+    return `${diffDays}天前`;
   }
 
   // Initialize calendar with data
@@ -165,24 +269,32 @@ import Layout from '../layouts/Layout.astro';
       date.setDate(date.getDate() - i);
       
       const dayElement = document.createElement('div');
-      dayElement.className = 'text-center p-3 rounded-lg';
+      dayElement.className = 'flex flex-col items-center p-3 rounded-xl border transition-colors duration-200';
       
       // Use real data if available, otherwise use mock data
       const isCompleted = recentDays ? recentDays[6 - i] : (Math.random() > 0.3);
       
       if (isCompleted) {
-        dayElement.className += ' bg-green-500 text-white';
+        dayElement.className += ' bg-green-50 border-green-200 hover:bg-green-100';
         dayElement.innerHTML = `
-          <div class="text-sm font-semibold">${days[date.getDay()]}</div>
-          <div class="text-xs">${date.getDate()}</div>
-          <div class="mt-1">✅</div>
+          <div class="text-xs font-medium text-green-800 mb-1">${days[date.getDay()]}</div>
+          <div class="text-sm font-bold text-green-900 mb-2">${date.getDate()}</div>
+          <div class="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+            </svg>
+          </div>
         `;
       } else {
-        dayElement.className += ' bg-gray-200 text-gray-600';
+        dayElement.className += ' bg-gray-50 border-gray-200 hover:bg-gray-100';
         dayElement.innerHTML = `
-          <div class="text-sm font-semibold">${days[date.getDay()]}</div>
-          <div class="text-xs">${date.getDate()}</div>
-          <div class="mt-1">❌</div>
+          <div class="text-xs font-medium text-gray-600 mb-1">${days[date.getDay()]}</div>
+          <div class="text-sm font-bold text-gray-900 mb-2">${date.getDate()}</div>
+          <div class="w-5 h-5 rounded-full bg-gray-300 flex items-center justify-center">
+            <svg class="w-3 h-3 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </div>
         `;
       }
       
@@ -192,6 +304,13 @@ import Layout from '../layouts/Layout.astro';
 
   // Initialize when the DOM is loaded
   document.addEventListener('DOMContentLoaded', async () => {
+    // Show loading state
+    const loadingIcon = document.getElementById('loading-icon');
+    const dataSourceText = document.getElementById('data-source-text');
+    
+    if (loadingIcon) loadingIcon.classList.remove('hidden');
+    if (dataSourceText) dataSourceText.textContent = '加载数据中...';
+    
     // Initialize with mock data first for immediate display
     updateCalendar();
     

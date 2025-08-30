@@ -7,12 +7,17 @@ import Layout from '../layouts/Layout.astro';
   description="与 wangrunlin 取得联系，讨论 ShipDaily 挑战、技术交流或合作机会。通过 Twitter、GitHub、邮件等方式联系。"
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-teal-600 to-cyan-600 text-white">
-    <div class="max-w-4xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl font-extrabold sm:text-5xl">
+  <section class="bg-white border-b border-gray-100">
+    <div class="max-w-4xl mx-auto py-20 px-4 sm:py-28 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-900 text-white text-2xl font-semibold">
+          💬
+        </div>
+      </div>
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
         联系我
       </h1>
-      <p class="mt-6 text-xl leading-8">
+      <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
         欢迎讨论技术、分享想法或者一起参与 ShipDaily 挑战
       </p>
     </div>
@@ -33,22 +38,22 @@ import Layout from '../layouts/Layout.astro';
         <a 
           href="https://twitter.com/wangrunlin_"
           target="_blank"
-          class="block bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          class="block bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-all duration-200 hover:border-gray-300"
         >
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xl">
-              🐦
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-xl">
+              <span class="text-blue-600">🐦</span>
             </div>
             <div class="ml-4">
               <h3 class="text-xl font-semibold text-gray-900">Twitter</h3>
-              <p class="text-blue-600">@wangrunlin_</p>
+              <p class="text-blue-600 font-medium">@wangrunlin_</p>
             </div>
           </div>
           <p class="text-gray-600 mb-4">
             最快的联系方式，我会及时回复私信。也可以在这里看到我的 #shipdaily 动态更新。
           </p>
           <div class="flex items-center text-blue-600">
-            <span class="mr-2">关注我的Twitter</span>
+            <span class="mr-2 text-sm font-medium">关注我的Twitter</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
@@ -59,22 +64,22 @@ import Layout from '../layouts/Layout.astro';
         <a 
           href="https://github.com/wangrunlin"
           target="_blank"
-          class="block bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
+          class="block bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-all duration-200 hover:border-gray-300"
         >
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-white text-xl">
-              📚
+            <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-xl">
+              <span class="text-gray-800">📚</span>
             </div>
             <div class="ml-4">
               <h3 class="text-xl font-semibold text-gray-900">GitHub</h3>
-              <p class="text-gray-600">@wangrunlin</p>
+              <p class="text-gray-600 font-medium">@wangrunlin</p>
             </div>
           </div>
           <p class="text-gray-600 mb-4">
             查看我的项目和代码，欢迎 star、fork 或提交 issue。也可以通过 GitHub 讨论技术问题。
           </p>
           <div class="flex items-center text-gray-700">
-            <span class="mr-2">访问我的 GitHub</span>
+            <span class="mr-2 text-sm font-medium">访问我的 GitHub</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
@@ -82,14 +87,14 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Email -->
-        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+        <div class="bg-white rounded-xl border border-gray-200 p-6">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white text-xl">
-              ✉️
+            <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-xl">
+              <span class="text-green-600">✉️</span>
             </div>
             <div class="ml-4">
               <h3 class="text-xl font-semibold text-gray-900">邮件</h3>
-              <p class="text-green-600">点击复制邮箱地址</p>
+              <p class="text-green-600 font-medium">点击复制邮箱地址</p>
             </div>
           </div>
           <p class="text-gray-600 mb-4">
@@ -99,7 +104,7 @@ import Layout from '../layouts/Layout.astro';
             id="copy-email" 
             class="flex items-center text-green-600 hover:text-green-700 transition-colors"
           >
-            <span class="mr-2">复制邮箱地址</span>
+            <span class="mr-2 text-sm font-medium">复制邮箱地址</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
             </svg>
@@ -107,14 +112,14 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- WeChat -->
-        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+        <div class="bg-white rounded-xl border border-gray-200 p-6">
           <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl">
-              💬
+            <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-xl">
+              <span class="text-green-600">💬</span>
             </div>
             <div class="ml-4">
               <h3 class="text-xl font-semibold text-gray-900">微信</h3>
-              <p class="text-green-600">扫码添加</p>
+              <p class="text-green-600 font-medium">扫码添加</p>
             </div>
           </div>
           <p class="text-gray-600 mb-4">
@@ -124,7 +129,7 @@ import Layout from '../layouts/Layout.astro';
             id="show-wechat" 
             class="flex items-center text-green-600 hover:text-green-700 transition-colors"
           >
-            <span class="mr-2">显示微信二维码</span>
+            <span class="mr-2 text-sm font-medium">显示微信二维码</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
             </svg>
