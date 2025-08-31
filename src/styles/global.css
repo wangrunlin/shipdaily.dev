@@ -1,1 +1,136 @@
 @import "tailwindcss";
+
+/* 移动端优化和兼容性样式 */
+@layer base {
+  /* 确保正确的视窗设置 */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    touch-action: manipulation;
+  }
+  
+  /* 移动端友好的触摸目标大小 */
+  button, 
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 优化移动端输入框 */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* 防止 iOS 自动缩放 */
+  }
+  
+  /* 禁用移动端的点击高亮 */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* 安全区域支持 */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@layer utilities {
+  /* 移动端专用工具类 */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 移动端文字选择优化 */
+  .mobile-select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* 移动端滚动优化 */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* 防止水平滚动 */
+  .no-horizontal-scroll {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+}
+
+/* 特定设备和浏览器兼容性 */
+@supports (-webkit-backdrop-filter: blur(10px)) {
+  .backdrop-blur-safari {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* iOS Safari 兼容性 */
+@supports (-webkit-touch-callout: none) {
+  .ios-safari-fix {
+    /* 修复 iOS Safari 的视窗高度问题 */
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* 高 DPI 显示优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-dpi {
+    /* 高分辨率屏幕优化 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* 极小屏幕优化 */
+@media (max-width: 320px) {
+  .text-responsive {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .px-responsive {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+/* 横屏模式优化 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-mobile-landscape {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tw-prose-body: #d1d5db;
+    --tw-prose-headings: #f9fafb;
+    --tw-prose-lead: #9ca3af;
+    --tw-prose-links: #60a5fa;
+    --tw-prose-bold: #f9fafb;
+    --tw-prose-counters: #9ca3af;
+    --tw-prose-bullets: #6b7280;
+    --tw-prose-hr: #374151;
+    --tw-prose-quotes: #f9fafb;
+    --tw-prose-quote-borders: #374151;
+    --tw-prose-captions: #9ca3af;
+    --tw-prose-code: #f9fafb;
+    --tw-prose-pre-code: #d1d5db;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-th-borders: #4b5563;
+    --tw-prose-td-borders: #374151;
+  }
+}

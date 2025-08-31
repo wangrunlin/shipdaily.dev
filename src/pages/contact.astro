@@ -278,6 +278,12 @@ import Layout from '../layouts/Layout.astro';
           setTimeout(() => {
             emailToast.classList.add('translate-x-full');
           }, 3000);
+          
+          // 跟踪联系方式交互
+          import('../lib/analytics').then(({ Analytics }) => {
+            Analytics.trackShipDaily.contactInteraction('email_copy');
+          });
+          
         } catch (err) {
           console.error('Failed to copy email:', err);
           // Fallback for older browsers
@@ -292,6 +298,12 @@ import Layout from '../layouts/Layout.astro';
             setTimeout(() => {
               emailToast.classList.add('translate-x-full');
             }, 3000);
+            
+            // 跟踪联系方式交互
+            import('../lib/analytics').then(({ Analytics }) => {
+              Analytics.trackShipDaily.contactInteraction('email_copy_fallback');
+            });
+            
           } catch (fallbackErr) {
             console.error('Fallback copy failed:', fallbackErr);
           }
@@ -305,6 +317,11 @@ import Layout from '../layouts/Layout.astro';
       showWeChatBtn.addEventListener('click', () => {
         wechatModal.classList.remove('hidden');
         wechatModal.classList.add('flex');
+        
+        // 跟踪微信二维码查看
+        import('../lib/analytics').then(({ Analytics }) => {
+          Analytics.trackShipDaily.contactInteraction('wechat_qr_view');
+        });
       });
     }
 

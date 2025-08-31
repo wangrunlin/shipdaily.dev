@@ -4,15 +4,15 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="shipdaily.dev - 每日 Ship 挑战">
   <!-- Hero Section -->
-  <section class="bg-white border-b border-gray-100">
+  <section class="bg-white border-b border-gray-100" aria-labelledby="hero-heading">
     <div class="max-w-6xl mx-auto py-20 px-4 sm:py-28 sm:px-6 lg:px-8">
       <div class="text-center">
         <div class="mb-8">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-900 text-white text-2xl font-semibold">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gray-900 text-white text-2xl font-semibold" aria-hidden="true">
             🚢
           </div>
         </div>
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+        <h1 id="hero-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
           每日 Ship 挑战
         </h1>
         <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
@@ -22,16 +22,18 @@ import Layout from '../layouts/Layout.astro';
         <div class="mt-10 flex items-center justify-center gap-x-4">
           <a
             href="#progress"
-            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors duration-200 shadow-sm"
+            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 shadow-sm"
+            aria-describedby="progress-description"
           >
             查看今日进度
-            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </a>
+          <span id="progress-description" class="sr-only">跳转到今日 ShipDaily 进展统计区域</span>
           <a
             href="/about"
-            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+            class="inline-flex items-center px-4 py-2.5 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
           >
             了解更多
           </a>
@@ -41,28 +43,28 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Progress Section -->
-  <section id="progress" class="py-20 bg-gray-50">
+  <section id="progress" class="py-20 bg-gray-50" aria-labelledby="progress-heading">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-2xl font-bold text-gray-900">今日进度</h2>
+        <h2 id="progress-heading" class="text-2xl font-bold text-gray-900">今日进度</h2>
         <p class="mt-2 text-sm text-gray-600">
           wangrunlin 的 ShipDaily 挑战数据
         </p>
       </div>
 
       <!-- Status Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16" role="region" aria-label="统计卡片">
         <!-- Today's Status -->
-        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+        <article class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200" role="img" aria-labelledby="today-status-title" aria-describedby="today-status">
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-green-50">
-              <div class="text-lg text-green-600" id="today-status-icon">✅</div>
+              <div class="text-lg text-green-600" id="today-status-icon" aria-hidden="true">✅</div>
             </div>
-            <div class="text-2xl font-bold text-gray-900" id="today-status-display">-</div>
+            <div class="text-2xl font-bold text-gray-900" id="today-status-display" aria-live="polite">-</div>
           </div>
-          <h3 class="text-sm font-medium text-gray-600">今日状态</h3>
-          <p class="text-xs text-gray-500 mt-1" id="today-status">检查中...</p>
-        </div>
+          <h3 id="today-status-title" class="text-sm font-medium text-gray-600">今日状态</h3>
+          <p class="text-xs text-gray-500 mt-1" id="today-status" aria-live="polite">检查中...</p>
+        </article>
 
         <!-- Streak -->
         <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
@@ -208,6 +210,13 @@ import Layout from '../layouts/Layout.astro';
     
     // Update data source indicator
     updateDataSourceIndicator(stats);
+    
+    // 跟踪数据加载事件
+    if (typeof window !== 'undefined') {
+      import('../lib/analytics').then(({ Analytics }) => {
+        Analytics.trackShipDaily.viewStats(stats.dataSource);
+      });
+    }
   }
 
   // Update data source indicator
@@ -317,4 +326,57 @@ import Layout from '../layouts/Layout.astro';
     // Then load real data
     await loadStats();
   });
+
+  // Performance monitoring
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      // 在空闲时间初始化性能监控
+      import('../lib/web-vitals').then(({ WebVitals }) => {
+        WebVitals.init();
+        
+        // 5秒后报告指标
+        setTimeout(() => {
+          WebVitals.reportMetrics();
+        }, 5000);
+      });
+      
+      // 初始化可访问性功能
+      import('../lib/accessibility').then(({ AccessibilityHelper }) => {
+        AccessibilityHelper.init();
+      });
+      
+      // 初始化移动端兼容性
+      import('../lib/mobile-compat').then(({ MobileCompatibility }) => {
+        MobileCompatibility.init();
+      });
+      
+      // 初始化分析跟踪
+      import('../lib/analytics').then(({ Analytics }) => {
+        Analytics.init();
+      });
+    });
+  }
+  
+  // 为动态内容添加无障碍公告
+  function announceDataUpdate(dataSource) {
+    if (typeof window !== 'undefined') {
+      import('../lib/accessibility').then(({ AccessibilityHelper }) => {
+        let message = '';
+        switch(dataSource) {
+          case 'real':
+            message = '实时数据已加载完成';
+            break;
+          case 'fallback':
+            message = '备用数据已加载完成';
+            break;
+          case 'mock':
+            message = '演示数据已加载完成，这不是真实数据';
+            break;
+        }
+        if (message) {
+          AccessibilityHelper.announce(message, 'polite');
+        }
+      });
+    }
+  }
 </script>

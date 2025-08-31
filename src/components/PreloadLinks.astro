@@ -1,0 +1,37 @@
+---
+// 预加载关键资源以提升性能
+---
+
+<!-- 预加载关键页面 -->
+<link rel="prefetch" href="/about" />
+<link rel="prefetch" href="/community" />
+<link rel="prefetch" href="/me" />
+
+<!-- 预加载 API 端点 -->
+<link rel="prefetch" href="/api/stats" />
+
+<!-- DNS 预解析外部域名 -->
+<link rel="dns-prefetch" href="//api.github.com" />
+<link rel="dns-prefetch" href="//twitter.com" />
+<link rel="dns-prefetch" href="//x.com" />
+
+<!-- 预连接关键外部资源 -->
+<link rel="preconnect" href="https://api.github.com" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+
+<!-- 预加载 Web Vitals 脚本 -->
+<script>
+  // 预加载关键 JavaScript
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      // 预加载页面间导航所需的资源
+      const prefetchPages = ['/about', '/community', '/me', '/contact'];
+      prefetchPages.forEach(page => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = page;
+        document.head.appendChild(link);
+      });
+    });
+  }
+</script>
