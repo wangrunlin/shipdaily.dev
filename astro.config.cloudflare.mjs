@@ -1,10 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+// Cloudflare Pages 配置
 export default defineConfig({
-  output: 'static',
+  output: 'server',
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true
+    }
+  }),
   site: 'https://shipdaily.dev',
   trailingSlash: 'never',
   build: {

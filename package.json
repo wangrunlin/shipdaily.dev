@@ -12,6 +12,8 @@
     "start": "astro preview"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.7",
+    "@astrojs/vercel": "^8.2.7",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.5",
     "tailwindcss": "^4.1.12"

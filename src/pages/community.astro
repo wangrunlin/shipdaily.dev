@@ -7,22 +7,28 @@ import Layout from '../layouts/Layout.astro';
   description="查看 ShipDaily 社区的最新动态，了解其他开发者的每日 Ship 进展。加入 #shipdaily 挑战，与志同道合的开发者一起成长。"
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-green-600 to-blue-600 text-white">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+  <section class="bg-white border-b border-gray-100" aria-labelledby="community-hero-heading">
+    <div class="max-w-6xl mx-auto py-20 px-4 sm:py-28 sm:px-6 lg:px-8">
       <div class="text-center">
-        <h1 class="text-4xl font-extrabold sm:text-5xl">
-          🌟 社区动态
+        <div class="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-6" aria-hidden="true">
+          🌟
+        </div>
+        <h1 id="community-hero-heading" class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          社区动态
         </h1>
-        <p class="mt-4 text-xl sm:text-2xl max-w-3xl mx-auto">
+        <p class="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
           看看其他开发者的 #shipdaily 进展，获取灵感和动力
         </p>
-        <div class="mt-8">
+        <div class="mt-10">
           <a
             href="https://twitter.com/hashtag/shipdaily"
             target="_blank"
-            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md bg-white text-blue-600 hover:bg-gray-50 transition-colors duration-300"
+            class="inline-flex items-center px-6 py-3 text-sm font-semibold text-white bg-gray-900 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200 shadow-sm"
           >
             在 Twitter 查看更多
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
           </a>
         </div>
       </div>
@@ -30,33 +36,44 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Community Stats -->
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-16 bg-gray-50" aria-labelledby="stats-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 id="stats-heading" class="text-2xl font-bold text-gray-900">社区统计</h2>
+        <div class="mt-2 flex justify-center items-center space-x-2">
+          <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+          <p class="text-sm text-gray-600">演示数据</p>
+        </div>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gradient-to-r from-purple-400 to-purple-600 rounded-lg p-6 text-white text-center">
-          <div class="text-3xl font-bold mb-2" id="active-members">156+</div>
-          <p class="text-purple-100">活跃成员</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 text-center hover:shadow-md transition-shadow duration-200">
+          <div class="text-2xl font-bold text-gray-900 mb-2" id="active-members">156+</div>
+          <p class="text-sm text-gray-600">活跃成员</p>
         </div>
-        <div class="bg-gradient-to-r from-blue-400 to-blue-600 rounded-lg p-6 text-white text-center">
-          <div class="text-3xl font-bold mb-2" id="total-ships">2,847</div>
-          <p class="text-blue-100">总 Ship 次数</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 text-center hover:shadow-md transition-shadow duration-200">
+          <div class="text-2xl font-bold text-gray-900 mb-2" id="total-ships">2,847</div>
+          <p class="text-sm text-gray-600">总 Ship 次数</p>
         </div>
-        <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-lg p-6 text-white text-center">
-          <div class="text-3xl font-bold mb-2" id="longest-streak">42天</div>
-          <p class="text-green-100">最长连击</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-6 text-center hover:shadow-md transition-shadow duration-200">
+          <div class="text-2xl font-bold text-gray-900 mb-2" id="longest-streak">42天</div>
+          <p class="text-sm text-gray-600">最长连击</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Recent Activity -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-16 bg-white" aria-labelledby="activity-heading">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold text-gray-900">最近动态</h2>
-        <p class="mt-4 text-lg text-gray-600">
+        <h2 id="activity-heading" class="text-2xl font-bold text-gray-900">最近动态</h2>
+        <p class="mt-2 text-gray-600">
           社区成员的最新 #shipdaily 分享
         </p>
+        <div class="mt-4 flex justify-center items-center space-x-2">
+          <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
+          <p class="text-sm text-gray-500">以下为演示数据</p>
+        </div>
       </div>
 
       <!-- Activity Feed -->
@@ -64,8 +81,8 @@ import Layout from '../layouts/Layout.astro';
         <div class="space-y-6" id="activity-feed">
           <!-- Loading state -->
           <div class="text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-            <p class="mt-2 text-gray-600">加载社区动态中...</p>
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-gray-400"></div>
+            <p class="mt-2 text-gray-500 text-sm">加载社区动态中...</p>
           </div>
         </div>
 
@@ -73,7 +90,7 @@ import Layout from '../layouts/Layout.astro';
         <div class="text-center mt-8">
           <button 
             id="load-more" 
-            class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-300"
+            class="inline-flex items-center px-6 py-3 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200"
             style="display: none;"
           >
             加载更多动态
@@ -84,37 +101,37 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- How to Participate -->
-  <section class="py-16 bg-white">
+  <section class="py-16 bg-gray-50" aria-labelledby="participate-heading">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-extrabold text-gray-900 mb-8">
+      <h2 id="participate-heading" class="text-2xl font-bold text-gray-900 mb-8">
         如何参与社区？
       </h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-blue-50 rounded-lg p-6">
-          <div class="text-4xl mb-4">📱</div>
-          <h3 class="text-xl font-semibold text-blue-900 mb-3">分享你的进展</h3>
-          <p class="text-blue-800">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="text-3xl mb-4" aria-hidden="true">📱</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">分享你的进展</h3>
+          <p class="text-gray-600 text-sm">
             在 Twitter 上使用 #shipdaily 标签分享你的每日编程进展。
             可以包括学到的新知识、完成的功能、或遇到的有趣问题。
           </p>
         </div>
 
-        <div class="bg-green-50 rounded-lg p-6">
-          <div class="text-4xl mb-4">💬</div>
-          <h3 class="text-xl font-semibold text-green-900 mb-3">互动支持</h3>
-          <p class="text-green-800">
+        <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
+          <div class="text-3xl mb-4" aria-hidden="true">💬</div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">互动支持</h3>
+          <p class="text-gray-600 text-sm">
             点赞、评论和转发其他开发者的 #shipdaily 动态。
             相互鼓励和学习，建立有意义的开发者关系。
           </p>
         </div>
       </div>
 
-      <div class="bg-gray-900 rounded-xl p-8">
-        <h3 class="text-2xl font-bold text-white mb-4">分享模板</h3>
-        <div class="bg-gray-800 rounded-lg p-6">
-          <p class="text-sm text-gray-300 mb-4">复制并自定义这个模板：</p>
-          <div class="bg-gray-700 rounded-lg p-4 font-mono text-sm text-gray-100">
+      <div class="bg-white rounded-xl border border-gray-200 p-8">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">分享模板</h3>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <p class="text-sm text-gray-600 mb-4">复制并自定义这个模板：</p>
+          <div class="bg-gray-100 rounded-lg p-4 font-mono text-sm text-gray-800">
             🚢 #shipdaily Day X<br/>
             📝 今天学习/完成了：[具体内容]<br/>
             💡 学到的新知识：[关键收获]<br/>
@@ -197,10 +214,10 @@ import Layout from '../layouts/Layout.astro';
 
   function createActivityCard(activity) {
     return `
-      <div class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-300">
         <div class="flex items-start space-x-4">
           <div class="flex-shrink-0">
-            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-2xl">
+            <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-lg">
               ${activity.avatar}
             </div>
           </div>
@@ -211,17 +228,17 @@ import Layout from '../layouts/Layout.astro';
               <span class="text-sm text-gray-500">·</span>
               <span class="text-sm text-gray-500">${activity.timestamp}</span>
             </div>
-            <p class="text-gray-700 whitespace-pre-line mb-4">${activity.content}</p>
+            <p class="text-gray-700 whitespace-pre-line mb-4 text-sm">${activity.content}</p>
             <div class="flex items-center space-x-6 text-gray-500">
-              <button class="flex items-center space-x-1 hover:text-red-500 transition-colors">
+              <button class="flex items-center space-x-1 hover:text-gray-700 transition-colors">
                 <span>❤️</span>
                 <span class="text-sm">${activity.likes}</span>
               </button>
-              <button class="flex items-center space-x-1 hover:text-green-500 transition-colors">
+              <button class="flex items-center space-x-1 hover:text-gray-700 transition-colors">
                 <span>🔁</span>
                 <span class="text-sm">${activity.retweets}</span>
               </button>
-              <button class="text-sm hover:text-blue-500 transition-colors">
+              <button class="text-sm hover:text-gray-700 transition-colors">
                 回复
               </button>
             </div>

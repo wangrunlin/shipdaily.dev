@@ -4,11 +4,6 @@
   "devCommand": "bun run dev",
   "installCommand": "bun install",
   "framework": "astro",
-  "functions": {
-    "src/pages/api/*.ts": {
-      "maxDuration": 30
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
