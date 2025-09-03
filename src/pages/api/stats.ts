@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { githubAPI } from '../../lib/github';
 import { checkRateLimit, validateApiResponse, isValidGitHubApiUrl } from '../../lib/security';
+import githubStats from '../../data/github-stats.json';
 
 export const GET: APIRoute = async ({ request }) => {
   // 获取客户端 IP 进行频率限制
@@ -31,16 +32,16 @@ export const GET: APIRoute = async ({ request }) => {
   try {
     // 首先尝试读取静态数据文件
     try {
-      const staticDataPath = './public/api/github-stats.json';
-      const staticData = await import(staticDataPath);
+      // const staticDataPath = './src/data/github-stats.json';
+      // const staticData = await import(staticDataPath);
       
       // 验证静态数据结构
       const expectedFields = ['todayStatus', 'streakCount', 'monthlyCount', 'totalCount', 'recentDays'];
-      if (!validateApiResponse(staticData.default, expectedFields)) {
+      if (!validateApiResponse(githubStats, expectedFields)) {
         throw new Error('Invalid static data structure');
       }
-      
-      return new Response(JSON.stringify(staticData.default), {
+
+      return new Response(JSON.stringify(githubStats), {
         status: 200,
         headers: {
           'Content-Type': 'application/json',

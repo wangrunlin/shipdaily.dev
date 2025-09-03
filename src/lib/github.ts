@@ -28,8 +28,17 @@ class GitHubAPI {
       since ? `?since=${since}` : ''
     }`;
     
+    const headers: Record<string, string> = {
+      'User-Agent': 'shipdaily.dev/1.0'
+    };
+    
+    // 添加 GitHub token 支持
+    if (typeof process !== 'undefined' && process.env?.GITHUB_TOKEN) {
+      headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+    }
+    
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, { headers });
       if (!response.ok) {
         throw new Error(`GitHub API error: ${response.status}`);
       }

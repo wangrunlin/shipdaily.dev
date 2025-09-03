@@ -55,14 +55,14 @@ async function fetchCommits(since?: string): Promise<GitHubCommit[]> {
   if (process.env.GITHUB_TOKEN) {
     const token = sanitizeInput(process.env.GITHUB_TOKEN.trim());
     if (token && token.length > 0) {
-      headers['Authorization'] = `token ${token}`;
+      headers['Authorization'] = `Bearer ${token}`;
     }
   }
   
   try {
     const response = await fetch(url, { 
       headers,
-      timeout: 10000 // 10秒超时
+      signal: AbortSignal.timeout(10000) // 10秒超时
     });
     
     if (!response.ok) {
@@ -224,7 +224,7 @@ async function main() {
     const stats = await generateStats();
     
     // 验证输出路径安全性
-    const outputPath = 'public/api/github-stats.json';
+    const outputPath = 'src/data/github-stats.json';
     if (!outputPath.match(/^[a-zA-Z0-9/.-]+\.json$/)) {
       throw new Error('Invalid output path');
     }
