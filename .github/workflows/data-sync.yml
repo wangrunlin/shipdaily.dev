@@ -32,7 +32,7 @@ jobs:
           mkdir -p data
           bun run scripts/fetch-github-data.ts
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
 
       - name: Commit and push if changed
         run: |
