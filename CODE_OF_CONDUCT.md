@@ -58,7 +58,7 @@
 如果遇到辱骂、骚扰或其他不当行为，可以通过以下方式联系项目团队：
 
 - **GitHub Issues**: 对于公开的行为准则问题
-- **邮件**: wangrunlin@example.com (请在主题中标明 "CoC Report")
+- **邮件**: me@alin.run (请在主题中标明 "CoC Report")
 - **Twitter**: [@wangrunlin_](https://twitter.com/wangrunlin_) (私信)
 
 所有投诉都将被审查和调查，并将产生被认为必要和适当的回应。项目团队有义务为事件报告者保密。具体执行政策的更多细节可能会单独发布。
