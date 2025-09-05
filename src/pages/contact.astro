@@ -87,29 +87,30 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Email -->
-        <div class="bg-white rounded-xl border border-gray-200 p-6">
+        <a 
+          href="mailto:me@alin.run"
+          id="email-link"
+          class="block bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-all duration-200 hover:border-gray-300"
+        >
           <div class="flex items-center mb-4">
             <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-xl">
               <span class="text-green-600">✉️</span>
             </div>
             <div class="ml-4">
               <h3 class="text-xl font-semibold text-gray-900">邮件</h3>
-              <p class="text-green-600 font-medium">点击复制邮箱地址</p>
+              <p class="text-green-600 font-medium">me@alin.run</p>
             </div>
           </div>
           <p class="text-gray-600 mb-4">
             适合较正式的交流，如商务合作、技术咨询或详细的项目讨论。
           </p>
-          <button 
-            id="copy-email" 
-            class="flex items-center text-green-600 hover:text-green-700 transition-colors"
-          >
-            <span class="mr-2 text-sm font-medium">复制邮箱地址</span>
+          <div class="flex items-center text-green-600">
+            <span class="mr-2 text-sm font-medium">发送邮件</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
-          </button>
-        </div>
+          </div>
+        </a>
 
         <!-- WeChat -->
         <div class="bg-white rounded-xl border border-gray-200 p-6">
@@ -224,10 +225,6 @@ import Layout from '../layouts/Layout.astro';
   </section>
 </Layout>
 
-<!-- Email Toast -->
-<div id="email-toast" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 z-50">
-  ✓ 邮箱地址已复制到剪贴板
-</div>
 
 <!-- WeChat Modal -->
 <div id="wechat-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center">
@@ -237,13 +234,14 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-gray-600 text-sm">扫码添加我的微信</p>
     </div>
     
-    <!-- Placeholder for QR code -->
-    <div class="w-64 h-64 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-      <div class="text-center text-gray-500">
-        <div class="text-6xl mb-2">📱</div>
-        <p class="text-sm">微信二维码</p>
-        <p class="text-xs">(请联系获取)</p>
-      </div>
+    <!-- WeChat QR Code -->
+    <div class="w-64 h-64 bg-gray-100 rounded-lg overflow-hidden mx-auto mb-4">
+      <img 
+        src="https://wangrunlin.com/wechat.png" 
+        alt="微信二维码"
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
     </div>
     
     <button 
@@ -257,58 +255,18 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const copyEmailBtn = document.getElementById('copy-email');
-    const emailToast = document.getElementById('email-toast');
+    const emailLink = document.getElementById('email-link');
     const showWeChatBtn = document.getElementById('show-wechat');
     const wechatModal = document.getElementById('wechat-modal');
     const closeModalBtn = document.getElementById('close-wechat-modal');
 
-    // Copy email functionality
-    if (copyEmailBtn && emailToast) {
-      copyEmailBtn.addEventListener('click', async () => {
-        const email = 'me@alin.run'; // Replace with actual email
-        
-        try {
-          await navigator.clipboard.writeText(email);
-          
-          // Show toast
-          emailToast.classList.remove('translate-x-full');
-          
-          // Hide toast after 3 seconds
-          setTimeout(() => {
-            emailToast.classList.add('translate-x-full');
-          }, 3000);
-          
-          // 跟踪联系方式交互
-          import('../lib/analytics').then(({ Analytics }) => {
-            Analytics.trackShipDaily.contactInteraction('email_copy');
-          });
-          
-        } catch (err) {
-          console.error('Failed to copy email:', err);
-          // Fallback for older browsers
-          const textArea = document.createElement('textarea');
-          textArea.value = email;
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          try {
-            (document as any)['execCommand']('copy');
-            emailToast.classList.remove('translate-x-full');
-            setTimeout(() => {
-              emailToast.classList.add('translate-x-full');
-            }, 3000);
-            
-            // 跟踪联系方式交互
-            import('../lib/analytics').then(({ Analytics }) => {
-              Analytics.trackShipDaily.contactInteraction('email_copy_fallback');
-            });
-            
-          } catch (fallbackErr) {
-            console.error('Fallback copy failed:', fallbackErr);
-          }
-          document.body.removeChild(textArea);
-        }
+    // Email click tracking
+    if (emailLink) {
+      emailLink.addEventListener('click', () => {
+        // 跟踪邮件点击
+        import('../lib/analytics').then(({ Analytics }) => {
+          Analytics.trackShipDaily.contactInteraction('email_mailto');
+        });
       });
     }
 
