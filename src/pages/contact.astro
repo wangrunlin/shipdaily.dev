@@ -293,6 +293,7 @@ import Layout from '../layouts/Layout.astro';
           textArea.focus();
           textArea.select();
           try {
+            // @ts-ignore - 旧浏览器兼容性必需，虽然已弃用但仍广泛支持
             document.execCommand('copy');
             emailToast.classList.remove('translate-x-full');
             setTimeout(() => {
