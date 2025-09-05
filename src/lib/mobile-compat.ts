@@ -74,8 +74,9 @@ export class MobileCompatibility {
     const scrollableElements = document.querySelectorAll('.overflow-auto, .overflow-y-auto, .overflow-x-auto');
     
     scrollableElements.forEach(element => {
-      (element as HTMLElement).style.transform = 'translateZ(0)';
-      (element as HTMLElement).style.webkitOverflowScrolling = 'touch';
+      const htmlElement = element as HTMLElement;
+      htmlElement.style.transform = 'translateZ(0)';
+      (htmlElement.style as any).webkitOverflowScrolling = 'touch';
     });
     
     // 优化滚动事件
