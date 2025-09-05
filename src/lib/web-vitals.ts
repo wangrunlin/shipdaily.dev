@@ -41,8 +41,8 @@ export class WebVitals {
   private static observeFID() {
     try {
       const observer = new PerformanceObserver((list) => {
-        const firstInput = list.getEntries()[0];
-        if (firstInput) {
+        const firstInput = list.getEntries()[0] as PerformanceEntry & { processingStart?: number };
+        if (firstInput && firstInput.processingStart) {
           const fid = firstInput.processingStart - firstInput.startTime;
           this.metrics.set('FID', fid);
         }

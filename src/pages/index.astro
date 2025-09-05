@@ -175,7 +175,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // Update UI with real data
-  function updateUI(stats) {
+  function updateUI(stats: any) {
     // Update status indicators
     const todayStatusEl = document.getElementById('today-status');
     const todayStatusDisplayEl = document.getElementById('today-status-display');
@@ -191,13 +191,15 @@ import Layout from '../layouts/Layout.astro';
         todayStatusDisplayEl.textContent = '✓';
         todayStatusDisplayEl.className = 'text-2xl font-bold text-green-600';
         todayStatusIconEl.textContent = '✅';
-        todayStatusIconEl.closest('.bg-green-50').className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-green-50';
+        const greenParent = todayStatusIconEl.closest('.bg-green-50');
+        if (greenParent) greenParent.className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-green-50';
       } else {
         todayStatusEl.textContent = '未完成';
         todayStatusDisplayEl.textContent = '×';
         todayStatusDisplayEl.className = 'text-2xl font-bold text-red-600';
         todayStatusIconEl.textContent = '❌';
-        todayStatusIconEl.closest('.bg-green-50').className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-red-50';
+        const redParent = todayStatusIconEl.closest('.bg-green-50');
+        if (redParent) redParent.className = 'flex items-center justify-center w-10 h-10 rounded-lg bg-red-50';
       }
     }
     
@@ -220,7 +222,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // Update data source indicator
-  function updateDataSourceIndicator(stats) {
+  function updateDataSourceIndicator(stats: any) {
     const loadingIcon = document.getElementById('loading-icon');
     const dataSourceText = document.getElementById('data-source-text');
     
@@ -250,7 +252,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   // Get time ago string
-  function getTimeAgo(date) {
+  function getTimeAgo(date: Date) {
     const now = new Date();
     const diffMs = now.getTime() - date.getTime();
     const diffMinutes = Math.floor(diffMs / 60000);
@@ -357,26 +359,4 @@ import Layout from '../layouts/Layout.astro';
     });
   }
   
-  // 为动态内容添加无障碍公告
-  function announceDataUpdate(dataSource) {
-    if (typeof window !== 'undefined') {
-      import('../lib/accessibility').then(({ AccessibilityHelper }) => {
-        let message = '';
-        switch(dataSource) {
-          case 'real':
-            message = '实时数据已加载完成';
-            break;
-          case 'fallback':
-            message = '备用数据已加载完成';
-            break;
-          case 'mock':
-            message = '演示数据已加载完成，这不是真实数据';
-            break;
-        }
-        if (message) {
-          AccessibilityHelper.announce(message, 'polite');
-        }
-      });
-    }
-  }
 </script>

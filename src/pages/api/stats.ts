@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { githubAPI } from '../../lib/github';
-import { checkRateLimit, validateApiResponse, isValidGitHubApiUrl } from '../../lib/security';
+import { checkRateLimit, validateApiResponse } from '../../lib/security';
 import githubStats from '../../../data/github-stats.json';
 
 export const GET: APIRoute = async ({ request }) => {
@@ -120,7 +120,7 @@ export const GET: APIRoute = async ({ request }) => {
 };
 
 // 处理 OPTIONS 请求 (CORS 预检)
-export const OPTIONS: APIRoute = async ({ request }) => {
+export const OPTIONS: APIRoute = async () => {
   return new Response(null, {
     status: 200,
     headers: {

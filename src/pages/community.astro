@@ -212,7 +212,7 @@ import Layout from '../layouts/Layout.astro';
   let currentActivityIndex = 0;
   let isLoading = false;
 
-  function createActivityCard(activity) {
+  function createActivityCard(activity: any) {
     return `
       <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow duration-300">
         <div class="flex items-start space-x-4">

@@ -50,17 +50,17 @@ export class MobileCompatibility {
     const touchTargets = document.querySelectorAll('button, a, [role="button"]');
     
     touchTargets.forEach(element => {
-      element.addEventListener('touchstart', function() {
+      element.addEventListener('touchstart', function(this: Element) {
         this.classList.add('touch-active');
       }, { passive: true });
       
-      element.addEventListener('touchend', function() {
+      element.addEventListener('touchend', function(this: Element) {
         setTimeout(() => {
           this.classList.remove('touch-active');
         }, 150);
       }, { passive: true });
       
-      element.addEventListener('touchcancel', function() {
+      element.addEventListener('touchcancel', function(this: Element) {
         this.classList.remove('touch-active');
       }, { passive: true });
     });
@@ -74,8 +74,8 @@ export class MobileCompatibility {
     const scrollableElements = document.querySelectorAll('.overflow-auto, .overflow-y-auto, .overflow-x-auto');
     
     scrollableElements.forEach(element => {
-      element.style.transform = 'translateZ(0)';
-      element.style.webkitOverflowScrolling = 'touch';
+      (element as HTMLElement).style.transform = 'translateZ(0)';
+      (element as HTMLElement).style.webkitOverflowScrolling = 'touch';
     });
     
     // 优化滚动事件

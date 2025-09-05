@@ -1,7 +1,7 @@
 {
   "name": "shipdaily.dev",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
+    "@types/bun": "^1.2.21",
     "typescript": "^5.9.2"
   }
 }
