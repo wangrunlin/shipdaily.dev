@@ -27,7 +27,7 @@ jobs:
 
       - name: Fetch GitHub data
         run: |
-          mkdir -p public/api
+          mkdir -p data
           bun run scripts/fetch-github-data.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add public/api/
+          git add data/
           
           # 检查是否有更改
           if git diff --staged --quiet; then

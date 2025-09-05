@@ -224,7 +224,7 @@ async function main() {
     const stats = await generateStats();
     
     // 验证输出路径安全性
-    const outputPath = 'src/data/github-stats.json';
+    const outputPath = 'data/github-stats.json';
     if (!outputPath.match(/^[a-zA-Z0-9/.-]+\.json$/)) {
       throw new Error('Invalid output path');
     }

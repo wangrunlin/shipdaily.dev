@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { githubAPI } from '../../lib/github';
 import { checkRateLimit, validateApiResponse, isValidGitHubApiUrl } from '../../lib/security';
-import githubStats from '../../data/github-stats.json';
+import githubStats from '../../../data/github-stats.json';
 
 export const GET: APIRoute = async ({ request }) => {
   // 获取客户端 IP 进行频率限制
