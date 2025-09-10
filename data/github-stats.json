@@ -1,6 +1,6 @@
 {
-  "todayStatus": true,
-  "streakCount": 11,
+  "todayStatus": false,
+  "streakCount": 0,
   "monthlyCount": 9,
   "monthlyTotal": 30,
   "totalCount": 11,
@@ -11,8 +11,8 @@
     true,
     true,
     true,
-    true
+    false
   ],
-  "lastUpdated": "2025-09-09T23:23:06.402Z",
+  "lastUpdated": "2025-09-10T01:55:44.053Z",
   "dataSource": "real"
 }
