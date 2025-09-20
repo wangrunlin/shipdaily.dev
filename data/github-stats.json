@@ -6,13 +6,13 @@
   "totalCount": 16,
   "recentDays": [
     true,
-    true,
+    false,
     false,
     false,
     false,
     false,
     false
   ],
-  "lastUpdated": "2025-09-19T23:23:00.958Z",
+  "lastUpdated": "2025-09-20T01:53:58.328Z",
   "dataSource": "real"
 }
