@@ -2,7 +2,7 @@
   "todayStatus": false,
   "streakCount": 0,
   "monthlyCount": 0,
-  "monthlyTotal": 1,
+  "monthlyTotal": 2,
   "totalCount": 0,
   "recentDays": [
     false,
@@ -13,6 +13,6 @@
     false,
     false
   ],
-  "lastUpdated": "2026-02-01T23:35:20.227Z",
+  "lastUpdated": "2026-02-02T03:15:17.492Z",
   "dataSource": "fallback"
 }
